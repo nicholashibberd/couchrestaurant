@@ -1,0 +1,10 @@
+<div id="image_upload">
+  <% form_tag '/images', :id => 'image_upload_form', :multipart => true do %>
+    <%= file_field_tag 'attachment' %>
+		<%= hidden_field_tag 'slug', params[:page_id] %>
+		<%= hidden_field_tag 'image_type', 'unit' %>
+		<%= hidden_field_tag 'site', @site.theme %>
+    <%= text_field_tag 'file_name' %>
+    <%= submit_tag 'Upload' %>
+  <% end %>
+</div>

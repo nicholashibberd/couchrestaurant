@@ -1,0 +1,5 @@
+<h1>Sites</h1>
+<%- @sites.each do |site| %>
+  <li><%= "#{site.name} (#{site.phone})" %></li>
+<%- end %>
+</ul>

@@ -1,0 +1,63 @@
+body {
+	background-color: #eee;
+}
+
+#envelope {
+	background-color: #FFF;
+	border: 1px solid #ccc;
+	padding: 10px;
+}
+
+.nav_item_name, .nav_item_child_name {
+	float: left;
+	margin-right: 20px;
+}
+
+.nav_item_slug, .nav_item_child_slug {
+	float: left;
+	margin-right: 20px;
+}
+
+
+.nav_item {
+	padding: 10px;
+	background-color: #eee;
+	border: 1px solid #ccc;
+	margin-bottom: 10px;
+	width: 520px;
+	cursor: move;
+}
+
+#add_nav_item_form {
+	margin-top: 20px;
+	padding: 10px;
+	background-color: #eee;
+	border: 1px solid #ccc;
+	width: 500px;
+}
+
+.nav_item_child {
+	margin-top: 10px;
+	height: 30px;
+	padding-left: 10px;
+}
+
+/*
+**************************************
+Sortable elements
+**************************************
+*/
+
+#sortable { 
+	list-style-type: none; 
+	margin-top: 50px;
+}
+
+li.sortable_item { 
+	padding: 10px; 
+	border: 1px solid #ccc;
+	cursor: move;
+	width: 700px;
+	margin-bottom: 10px;
+	background-color: #eee;
+}

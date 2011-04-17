@@ -1,0 +1,11 @@
+<% @site.nav_items.each do |item| %>
+	<div class="nav_item"><%= link_to item.name, "/pages/#{item.slug}", :class => "nav_item" %>
+		<% if item.show_children(request[:id]) %>
+			<div class="child_nav_items">
+			<% item.children.each do |child| %>
+				<div class="child_nav_item"><%= link_to child.name, "/pages/#{child.slug}", :class => "child_nav_item #{child.selected?(request[:id])}" %></div>
+			<% end %>
+			</div>
+		<% end  %>
+	</div>
+<% end %>

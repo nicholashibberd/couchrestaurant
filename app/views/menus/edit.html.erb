@@ -1,0 +1,15 @@
+<h1>Edit <%= @menu.name %></h1>
+<%= form_for(@menu) do |f| %>
+	<%= f.hidden_field :slug %>
+	<%= f.hidden_field :site %>
+	<%= f.text_field :name %>
+	<%= f.submit :Submit %>
+	<ul id="sortable">
+	<% @menu.menu_sections.each_with_index do |section| %>
+				<%= menu_section(section[0]) %>
+				<%= link_to "Edit", url_for(:controller => 'menu_sections', :action => 'edit', :menu_id => request[:id], :id => section[1]) %>
+				
+	<% end %>
+	</ul>
+<% end %>
+<%= link_to "New menu section", url_for(:controller => 'menu_sections', :action => 'new', :menu_id => request[:id], :content_type => 'dish') %>

@@ -1,0 +1,53 @@
+<%= include_yui_editor_if_used.html_safe %>
+<h1>Edit Page</h1>
+<%= link_to @page.name, @page %>
+<%= form_for edit_page_path(@page), :multipart => true do |f| %>
+<div>
+<%= f.label :name %>
+<%= f.text_field :name %>
+</div>
+<div>
+<%= f.label :page_type %>
+<%= f.text_field :page_type %>
+</div>
+<div>
+	<%= f.label :unit %>
+	<ul id="sortable">
+	<% @page.units.each_with_index do |unit| %>
+				<%= display_unit_with_index(unit) %>
+	<% end %>
+	</ul>
+</div>
+<div>
+	<%= f.submit 'Save' %>
+	<%#= f.submit 'Add menu' %>
+	<%#= f.submit 'Add textbox' %>
+	<%#= f.submit 'Add heading' %>
+	<%#= f.submit 'Add link' %>	
+	<%#= f.submit 'Add image' %>		
+	<%= link_to 'Add menu', :controller => 'units', :action => 'new', :page_id => request[:id], :content_type => 'menu' %>
+	<%= link_to 'Add textbox', :controller => 'units', :action => 'new', :page_id => request[:id], :content_type => 'textbox' %>
+	<%= link_to 'Add heading', :controller => 'units', :action => 'new', :page_id => request[:id], :content_type => 'heading' %>
+	<%= link_to 'Add link', :controller => 'units', :action => 'new', :page_id => request[:id], :content_type => 'link' %>
+	<%= link_to 'Add image', :controller => 'units', :action => 'new', :page_id => request[:id], :content_type => 'image' %>
+</div>
+<% end %>
+<!--<p> <a href="#image_upload" rel="facebox">Upload images</a> </p>-->
+<h3>Background Images</h3>
+<%= image_upload('background') %>
+
+<h4>Current Background</h4>
+<% @page.background_images.each do |image| %>
+	<div class="background_image">
+	<%= image_tag("#{image.site}/#{image.slug}/backgrounds/#{image.filename}.jpeg", :height => '100px') %>
+	</div>
+	<%= form_tag image_path, :method => 'delete' %>
+	<%= hidden_field_tag :filename, image.filename %>
+	<%= submit_tag 'Delete' %>
+<% end %>
+<script>
+	$(function() {
+		$( "#sortable" ).sortable();
+		$( "#sortable" ).disableSelection();
+	});
+	</script>	

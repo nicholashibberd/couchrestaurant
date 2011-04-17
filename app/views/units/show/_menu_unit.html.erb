@@ -1,0 +1,20 @@
+<div class="menu">
+	<h2 class="menu_name">
+		<%#= unit.name %>
+	</h2>
+	<div class="menu_dishes">
+		<% unit.dishes.each do |dish| %>
+		<div class="menu_dish">
+			<h3 class="menu_dish_name">
+				<%#= dish.name %>
+			</h3>
+			<div class="menu_dish_description">
+				<%#= dish.description %>
+			</div>
+			<div class="menu_dish_price">
+				<%#= dish.price %>
+			</div>
+		</div>
+		<% end %>
+	</div>
+</div>

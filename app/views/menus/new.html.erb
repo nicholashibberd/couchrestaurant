@@ -1,0 +1,7 @@
+<h1>New Menu</h1>
+<%= form_for @menu do |f| %>
+	<%= f.hidden_field :site, :value => @site.domain %>
+	<%= f.text_field :name %>
+	<%= f.submit 'Create menu' %>
+
+<% end %>

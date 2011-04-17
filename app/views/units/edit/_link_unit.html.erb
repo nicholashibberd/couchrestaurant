@@ -1,0 +1,13 @@
+<%= form_tag update_unit_page_unit_path do %>
+		<%= hidden_field_tag "unit[content_type]", unit.content_type %>
+		<%= hidden_field_tag "unit[css_id]", unit.css_id %>			
+	<div>
+		<%= label_tag :link_content %><br />
+		<%= text_field_tag "unit[content]", unit.content %>
+	</div>
+	<div>
+		<%= label_tag :link_destination %><br />
+		<%= text_field_tag "unit[destination]", unit.destination %>
+	</div>
+	<%= submit_tag 'Submit' %>
+<% end %>

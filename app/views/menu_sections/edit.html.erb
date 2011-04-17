@@ -1,0 +1,8 @@
+Edit Menu Section
+<%= form_tag update_menu_section_path do %>
+		<%= hidden_field_tag "unit[content_type]", @menu_section.content_type %>
+	<div>
+		<%= label_tag :heading %><br />
+	</div>
+	<%= submit_tag 'Submit' %>
+<% end %>

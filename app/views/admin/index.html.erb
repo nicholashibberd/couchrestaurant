@@ -1,0 +1,18 @@
+<h1>Admin</h1>
+<%= link_to 'Menu Items', admin_edit_nav_items_path %>
+<div>
+	<% @pages.each do |page| %>
+		<%= link_to page.name, url_for(:controller => 'pages', :action => 'edit', :id => page.slug) %>
+	<% end %>
+</div>
+<div>
+<%= link_to 'Add new page', new_page_path %>
+</div>
+<div>
+	<% @menus.each do |menu| %>
+		<%= link_to menu.name, url_for(:controller => 'menus', :action => 'edit', :id => menu.slug) %>
+	<% end %>
+</div>
+<div>
+<%= link_to 'Add new menu', new_menu_path %>
+</div>

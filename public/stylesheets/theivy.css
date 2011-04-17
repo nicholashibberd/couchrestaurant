@@ -1,0 +1,164 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #6C6C6C;
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	font-size: 14px;
+}
+
+a {
+	text-decoration: none;
+	border: none;
+}
+
+.textbox_content {
+	line-height: 18px;
+}
+
+img {
+	border: none;
+}
+
+#wrapper {
+	width: 990px;
+	margin: auto;
+}
+
+#top_menu {
+	list-style-type: none;
+	padding: 10px;
+	height: 40px;
+}
+
+#top_menu a, #top_menu a:visited {
+	display: block;
+	float: left;
+	margin-right: 8px;
+	padding: 10px;
+	border: 1px solid #908F8F;
+	color: #FFF;
+	font-size: 13px
+}
+
+#left_nav {
+	padding: 20px;
+	background-color: #082420;
+	width: 210px;
+	color: #FFF;
+	float: left;
+}
+
+#header {
+	height: 140px;
+	width: 208px;
+	border: 1px solid #3D5350;
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+#header_address {
+	font-size: 11px;
+	padding: 0 50px;
+}
+
+#logo {
+	margin: 30px 0 20px 0;
+}
+
+
+/*
+***************************************
+Sitenav
+***************************************
+*/
+
+
+#site_nav div.nav_item {
+	border-bottom: 1px solid #3D5350;
+}
+
+#site_nav a, #site_nav a:visited {
+	display: block;
+	width: 200px;
+	color: #FFF;
+}
+
+#site_nav a.nav_item {
+	text-transform: uppercase;
+	font-size: 11px;
+	padding: 6px 0 6px 10px;
+}
+
+#site_nav a.nav_item:hover {
+	background-color: #021613;
+}
+
+#site_nav a.child_nav_item {
+	font-size: 10px;
+	padding: 1px 0 1px 10px;
+}
+
+#site_nav a.child_nav_item:hover {
+	color: #92AFAD;
+}
+
+#site_nav .child_nav_items {
+	margin: 2px 0 12px 0;
+}
+
+
+.pages_content {
+	height: 600px;
+	margin-left: 250px;
+	padding: 40px 30px 30px 30px;
+	width: 320px;
+	color: #fff;
+	font-size: 13px;
+	position: relative;
+	font-family: arial;
+}
+
+#pages_show_content a, #pages_show_content a:visited {
+	color: #fff;
+}
+
+#background_image {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: -1;
+}
+
+h1 {
+	font-size: 18px;
+	font-weight: normal;
+	margin-bottom: 20px;
+	font-family: verdana;
+}
+
+.home_link {
+	padding: 25px 15px;
+	background-color: #082420;
+	width: 127px;
+	border: 1px solid #fff;
+}
+
+#home_link_1 {
+	float: left;
+}
+
+#home_link_2 {
+	margin-left: 170px;
+}
+
+#home_textbox_2 {
+	margin-top: 20px;
+}
+
+#home_heading_2 {
+	margin-top: 20px;
+}
+

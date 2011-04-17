@@ -1,0 +1,12 @@
+<%= form_tag create_unit_page_units_path do %>
+	<%= hidden_field_tag "content_type", 'link' %>
+	<div>
+		<%= label_tag :link_content %><br />
+		<%= text_field_tag "unit[content]" %>
+	</div>
+	<div>
+		<%= label_tag :link_destination %><br />
+		<%= text_field_tag "unit[destination]" %>
+	</div>
+	<%= submit_tag 'Submit' %>
+<% end %>

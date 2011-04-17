@@ -1,0 +1,15 @@
+<h1><%= @page.name %></h1>
+<%#= render :partial => 'admin/units/textbox_unit', :locals => {:unit => @page.units[4]} %>
+
+<%= form_tag update_unit_page_path(@page) do %>
+	<%= hidden_field_tag "page[units][3][content_type]", @page.units[3].content_type %>
+	<%= hidden_field_tag "page[units][3][css_id]", @page.units[3].css_id %>
+<div>
+	<%= label_tag :content %><br />
+	<%= text_area_tag "page[units][3][content]", @page.units[3].content, :id => 'msgpost1' %>
+</div>
+	<%= submit_tag 'Submit' %>
+<% end %>
+
+
+

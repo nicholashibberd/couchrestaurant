@@ -1,0 +1,7 @@
+<div>
+  <% form_tag '/images', :multipart => true do %>
+    <%= file_field_tag 'attachment' %>
+    <%= text_field_tag 'file_name' %>
+    <%= submit_tag 'Upload' %>
+  <% end %>
+</div>

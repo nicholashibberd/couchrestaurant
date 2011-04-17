@@ -1,0 +1,8 @@
+<%= form_tag create_unit_page_units_path do %>
+	<%= hidden_field_tag "content_type", 'heading' %>
+	<div>
+		<%= label_tag :heading %><br />
+		<%= text_field_tag "unit[heading]" %>
+	</div>
+	<%= submit_tag 'Submit' %>
+<% end %>

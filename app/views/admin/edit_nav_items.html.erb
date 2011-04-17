@@ -1,0 +1,51 @@
+<h1>Menu Items</h1>
+<%#= form_tag :url => {:action=>"edit_nav_items", :controller=>"admin"} do %>
+<%= form_tag admin_edit_nav_items_path do %>
+<div id="sortable">
+	<% @nav_items.each_with_index do |nav_item| %>
+	<div class="nav_item">
+			<div class="nav_item_name">
+				<%= text_field_tag "site[nav_items][][name]", nav_item[0].name %>
+			</div>
+			<div class="nav_item_slug">
+				<%#= text_field_tag "site[nav_items][][slug]", nav_item[0].slug %>
+				<%= select_tag 'site[nav_items][][slug]', options_from_collection_for_select(@pages, 'slug', 'name', nav_item[0].slug) %>
+			</div>
+			<div>
+				<span class="add_sub_menu"><%= submit_tag 'Add submenu', :name => "add_submenu[#{nav_item[1]}]" %></span>				
+				<span class="delete_button"><%= submit_tag 'Delete', :name => "delete[#{nav_item[1]}]" %></span>
+			</div>
+			<div id="nav_item_children">
+				<% nav_item[0].children.each do |child| %>
+					<div class="nav_item_child">
+						<div class="nav_item_child_name">
+							<%= text_field_tag "site[nav_items][][children][][name]", child.name %>
+						</div>
+						<div class="nav_item_child_name">
+							<%= select_tag 'site[nav_items][][children][][slug]', options_from_collection_for_select(@pages, 'slug', 'name', child.slug) %>
+						</div>
+					</div>
+				<% end %>
+			</div>
+	</div>
+	<% end %>
+	<%= submit_tag 'Save' %>
+	<%= submit_tag 'Add menu item' %>
+</div>
+<% end %>
+
+<!--
+<div id="add_nav_item_form">
+<%#= form_tag admin_edit_nav_items_path do %>
+<%#= select_tag 'page', options_from_collection_for_select(@pages, 'slug', 'name') %>
+<%#= submit_tag 'Add menu item' %>
+<%# end %>
+</div>
+-->
+
+<script>
+	$(function() {
+		$( "#sortable" ).sortable();
+		$( "#sortable" ).disableSelection();
+	});
+	</script>

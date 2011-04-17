@@ -1,0 +1,15 @@
+<li class="sortable_item">
+			<%= hidden_field_tag "page[units][][content_type]", unit[0].content_type %>
+			<%= hidden_field_tag "page[units][][css_id]", unit[0].css_id %>
+			<%= hidden_field_tag "page[units][][site]", unit[0].site %>
+			<%= hidden_field_tag "page[units][][slug]", unit[0].slug %>
+			<%= hidden_field_tag "page[units][][filename]", unit[0].filename %>
+			<div class="admin_image">
+				<%= image_tag("#{unit[0].site}/#{unit[0].slug}/#{unit[0].filename}.jpeg", :height => '100px') %>
+			</div>
+		<div>
+		</div>
+		<div>
+			<span class="delete_button"><%= submit_tag 'Delete', :name => "delete[#{unit[1]}]" %></span>
+		</div>
+</li>
