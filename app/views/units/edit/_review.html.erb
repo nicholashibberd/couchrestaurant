@@ -1,0 +1,29 @@
+<%= content_for :head do %>
+<%= javascript_include_tag 'yahoo_yui/yahoo_dom_event', 'yahoo_yui/element_min', 'yahoo_yui/container_core', 'yahoo_yui/simple_editor' %>
+<% end %>
+
+<script>
+var myEditor = new YAHOO.widget.SimpleEditor('msgpost', {
+    height: '300px',
+    width: '522px',
+    dompath: true, //Turns on the bar at the bottom
+		handleSubmit: true
+});
+myEditor.render();
+</script>
+
+<div class="yui-skin-sam">
+<%= form_tag update_unit_page_unit_path do %>
+		<%= hidden_field_tag "unit[content_type]", unit.content_type %>
+		<%= hidden_field_tag "unit[css_id]", unit.css_id %>			
+		<div>
+		<%= label_tag :review %><br />
+		<%= text_area_tag "unit[review]", unit.review, :id => 'msgpost' %>
+		</div>
+		<div>
+		<%= label_tag :name %><br />
+		<%= text_field_tag "unit[name]", unit.name %>
+		</div>
+		<%= submit_tag 'Submit' %>
+<% end %>
+</div>

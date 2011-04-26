@@ -1,0 +1,42 @@
+<%= form_tag update_dish_menu_dish_path do %>
+			<div class="field">
+			<%= label_tag :Dish_name %><br />
+			<%= text_field_tag "dish[name]", @dish.name %><br />
+			</div>
+			<div class="field">
+			<%= label_tag :Description %><br />
+			<%= text_field_tag "dish[description]", @dish.description %><br />
+			</div>
+			<% @dish.price_points.each_with_index do |price_point, index| %>
+				<div class="price_point">
+					<div class="field">
+					<%= label_tag :Price %><br />
+					<%= text_field_tag "dish[price_points][][price]", price_point.price %><br />
+					</div>
+					<div class="field">
+					<%= label_tag :Price_description %><br />
+					<%= display_price_categories_for_dish(@dish.menu, price_point) %>
+					<%#= text_field_tag "dish[price_points][][description]", price_point.description %>
+					<%#= select_tag "dish[price_points][][description]", options_for_select(@dish.menu.price_categories)%>
+					</div>
+					<div class="field">
+					<%= label_tag :Per_person %><br />
+					<%= check_box_tag "dish[price_points][][per_person]", price_point.per_person %><br />
+					</div>
+					<div class="field">
+					<%= label_tag :Supplement %><br />
+					<%= text_field_tag "dish[price_points][][supplement]", price_point.supplement %><br />
+					</div>
+					<div class="field">
+					<%= label_tag :Supplement_description %><br />
+					<%= text_field_tag "dish[price_points][][supplement_description]", price_point.supplement_description %><br />
+					</div>
+					<div>
+						<span class="delete_button"><%= submit_tag 'Delete', :name => "delete[#{index}]" %></span>
+					</div>
+				</div>
+			<% end %>
+			
+	<%= submit_tag 'Add price' %>
+	<%= submit_tag 'Submit' %>
+<% end %>

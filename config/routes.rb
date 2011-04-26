@@ -1,10 +1,18 @@
 Couchrestaurant::Application.routes.draw do
-  resources :menus do 
+  resources :menus do
+    resources :dishes do
+      member do 
+        post 'update_dish'
+      end
+    end
     resources :menu_sections do
+      member do 
+        post 'update_menu_section'
+      end
     end
   end 
-  match "update_menu_section" => "menu_sections#update_menu_section"
-  match "create_menu_section" => "menu_sections#create_menu_section"
+  match "update_dish" => "dishes#update_dish"
+  match "create_dish" => "dishes#create_dish"
 
   resources :sites
   resources :pages do 
@@ -17,9 +25,11 @@ Couchrestaurant::Application.routes.draw do
     resources :units do
       member do 
         post 'update_unit'
+        post 'add_column'
       end
       collection do
         post 'create_unit'
+        post 'create_table_unit'
       end
     end
   end 
@@ -29,13 +39,25 @@ Couchrestaurant::Application.routes.draw do
       post 'new_image'
     end
   end
+  resources :downloads do 
+    collection do
+      post :download_document
+    end
+  end
+  resources :reservations do
+    collection do
+      get 'availability'
+      post 'availability', 'details'
+    end
+  end
+  resources :messages  
   match 'admin' => 'admin#index'
   match 'admin/new_nav_item' => 'admin#new_nav_item'
   match 'admin/edit_nav_items' => 'admin#edit_nav_items'
   #root :to => 'pages/show/home'
   match '/pages/:id/edit' => 'pages#edit'
   match '/menus/:id/edit' => 'menus#edit'
-  #match '/pages/:id/:sub_id' => 'pages#show'
+  match '/pages/:id/:sub_id' => 'pages#show'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

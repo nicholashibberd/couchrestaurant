@@ -1,0 +1,8 @@
+<%= form_tag create_unit_page_units_path do %>
+	<%= hidden_field_tag "content_type", 'menu' %>
+	<div>
+		<%= label_tag 'Menu' %>
+		<%= select_tag 'unit[menu_slug]', options_from_collection_for_select(@site.menus, 'slug', 'name') %>
+	</div>
+	<%= submit_tag 'Submit' %>
+<% end %>

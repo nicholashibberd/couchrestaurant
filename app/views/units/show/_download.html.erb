@@ -1,0 +1,9 @@
+<div class="download" id="<%= unit.css_id %>">
+	<%= form_tag download_document_downloads_path do %>
+		<%= hidden_field_tag 'download[site]', unit.site %>
+		<%= hidden_field_tag 'download[slug]', unit.slug %>
+		<%= hidden_field_tag 'download[filename]', unit.filename %>
+		<%= hidden_field_tag 'download[download_type]', unit.download_type %>
+		<%= submit_tag unit.link_text %>
+	<% end %>
+</div>

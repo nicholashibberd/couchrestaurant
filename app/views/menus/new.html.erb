@@ -1,7 +1,14 @@
 <h1>New Menu</h1>
 <%= form_for @menu do |f| %>
 	<%= f.hidden_field :site, :value => @site.domain %>
+	<div>
+	<%= f.label :name %>
 	<%= f.text_field :name %>
+	</div>
+	<div>
+	<%= f.label :menu_type %>
+	<%= f.select :menu_type, options_for_select([["List", "list"], ["Table", "table"]]) %>
+	</div>
 	<%= f.submit 'Create menu' %>
 
 <% end %>

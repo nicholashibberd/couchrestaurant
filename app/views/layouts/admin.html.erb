@@ -8,37 +8,37 @@
 
  <%= yield :head %>
 </head>
-<body>
-	<div id="background">
-		<div id="background_header">
-		</div>
-		<div id="background_menu">
-		</div>
-		<div id="background_content">
-		</div>
-	</div>	
-		<div id="envelope">
-			<div id="header">
-				<div id="user_status">
-					<%#= render 'layouts/user_status' %>
+<body onload="initialize()">
+		<div id="background">
+			<div id="background_header">
+			</div>
+			<div id="background_menu">
+			</div>
+			<div id="background_content">
+			</div>
+		</div>	
+			<div id="envelope">
+				<div id="header">
+					<div id="user_status">
+						<%#= render 'layouts/user_status' %>
+					</div>
+					<h1><%#= admin_logo %></h1>
+					<div id="top_nav">
+						<%#= render 'layouts/adminheader' %>				
+					</div>
 				</div>
-				<h1><%#= admin_logo %></h1>
-				<div id="top_nav">
-					<%#= render 'layouts/adminheader' %>				
+				<div id="<%= params[:controller] %>_<%= params[:action] %>_content" class="content">
+						<% flash.each do |key, value| %> 
+						<div class="flash <%= key %>"><%= value %></div>
+						<% end %>
+						<%= yield %>
 				</div>
 			</div>
-			<div id="<%= params[:controller] %>_<%= params[:action] %>_content" class="content">
-					<% flash.each do |key, value| %> 
-					<div class="flash <%= key %>"><%= value %></div>
-					<% end %>
-					<%= yield %>
+			<div id="footer_background_top">
 			</div>
-		</div>
-		<div id="footer_background_top">
-		</div>
-		<div id="footer">
-		</div>
+			<div id="footer">
+			</div>
 
-<%= yield :jqueryui %>
+	<%= yield :jqueryui %>
 </body>
 </html>

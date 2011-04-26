@@ -11,5 +11,5 @@ class ApplicationController < ActionController::Base
   def choose_layout
       @site.theme
   end
-  
+    
 end

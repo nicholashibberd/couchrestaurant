@@ -6,7 +6,7 @@ class MenusController < ApplicationController
   end
   
   def index
-    @menu = @site.menus
+    @menus = @site.menus
   end
   
   def edit
@@ -29,10 +29,20 @@ class MenusController < ApplicationController
   def update
     menu = @site.find_menu(params[:menu][:slug])
     menu.update_attributes(params[:menu])
+    if params[:commit] == 'Add price category'
+      menu.add_price_category(params[:add_price_category])
+    end
+    if params[:delete_price_category]
+      menu.delete_price_category(params[:delete_price_category])
+    end
+    if params[:delete]
+      menu.delete_dish(params[:delete])
+    end
     if menu.save!
-      redirect_to admin_path
+      redirect_to :controller => 'menus', :action => 'edit', :id => menu.slug
     else
       raise "Menu did not save"
     end
   end
+    
 end

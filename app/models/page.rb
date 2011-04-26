@@ -6,6 +6,7 @@ class Page < CouchRest::Model::Base
   property :units, :cast_as => [Unit], :default => [], :init_method => "new_instance"
   property :site
   property :background_images, :cast_as => [BackgroundImage], :default => []
+  property :parent
   
   view_by :slug
   view_by :site_id

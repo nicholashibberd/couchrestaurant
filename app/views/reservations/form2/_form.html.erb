@@ -1,0 +1,24 @@
+<%= content_for :head do %>
+<%= javascript_include_tag 'datepicker' %>
+<script type="text/javascript">
+	$(function() {
+		$("#datepicker").datepicker({dateFormat: 'DD d MM yy', firstDay: 1});
+	});
+</script>
+<% end %>
+<h1>Reservations</h1>
+<div>
+	Please select your date
+</div>
+<div id="reservation_form">
+	<%= form_tag availability_reservations_path do |f| %>
+	<%= hidden_field_tag :page_id, request[:id] %>
+	<%= hidden_field_tag :site, :value => @site.domain %>
+	<div>
+		<%= text_field_tag :date, nil, :id => 'datepicker' %><br />  
+	</div>
+	<div>
+		<%= submit_tag "Choose Time" %>
+	</div>
+	<% end %>
+</div>

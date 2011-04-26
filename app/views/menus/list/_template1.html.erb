@@ -1,0 +1,22 @@
+<div class="menu">
+	<h2 class="menu_name">
+		<%= menu.name %>
+	</h2>
+	<div class="menu_dishes">
+		<% menu.dishes.each do |dish| %>
+			<div class="dish">
+				<div class="dish_details">
+					<div class="dish_name">
+					<%= dish.name %>
+					</div>
+					<div class="dish_description">
+					<%= dish.description %>
+					</div>
+				</div>
+				<div class="dish_price">
+					<%= dish.price_display %>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>

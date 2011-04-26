@@ -1,9 +1,12 @@
 class Menu < CouchRest::Model::Base
   use_database CouchServer.default_database
   property :name
-  property :menu_sections, :cast_as => [MenuSection], :default => [], :init_method => "new_instance"
+  property :menu_sections
   property :site
   property :slug
+  property :price_categories, :default => []
+  property :menu_type
+  property :dishes, :cast_as => [Dish]
   
   view_by :site
   view_by :name
@@ -25,20 +28,28 @@ class Menu < CouchRest::Model::Base
     slug
   end
   
-  def add_section(content_type, options)
-    new_id = Integer(existing_sections(content_type)) + 1
-    css_id = "#{slug}_#{content_type}_#{new_id}"
-    default_params = {'content_type' => content_type, 'css_id' => css_id}
+  def add_dish(options)
+    new_id = Integer(dishes.size) + 1
+    css_id = "#{slug}_dish_#{new_id}"
+    default_params = {'css_id' => css_id}
     options.nil? ? params = default_params : params = default_params.merge(options)
-    self.menu_sections << MenuSection.new_instance(params)
+    self.dishes << Dish.new(params)
     self.save!
   end
   
-  def existing_sections(content_type)
-    menu_sections.select {|section| section.has_value?(content_type) }.size
+  def delete_dish(params)
+    value = Integer(params.index("Delete"))
+    self.dishes.delete_at(value)
+    self.save
   end
   
+  def add_price_category(cat)
+    price_categories << cat
+  end
   
-  
-
+  def delete_price_category(params)
+    value = Integer(params.index("Delete"))
+    price_categories.delete_at(value)    
+  end
+    
 end

@@ -21,6 +21,18 @@ class Unit < Hash
       ImageUnit.new(params)
     when 'list'
       ListUnit.new(params)
+    when 'table'
+      TableUnit.new(params)
+    when 'map'
+      MapUnit.new(params)
+    when 'reservation_form'
+      ReservationsUnit.new(params)
+    when 'download'
+      DownloadUnit.new(params)
+    when 'review'
+      ReviewUnit.new(params)
+    when 'contact_form'
+      ContactFormUnit.new(params)
     else
       raise "unknown content type #{params.inspect}"
     end

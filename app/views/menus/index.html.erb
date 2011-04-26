@@ -1,1 +1,11 @@
-All menus
+<h1>Menus</h1>
+<div>
+	<% @menus.each do |menu| %>
+	<li>
+		<%= link_to menu.name, url_for(:controller => 'menus', :action => 'edit', :id => menu.slug) %>
+	</li>
+	<% end %>
+</div>
+<div>
+<%= link_to 'Add new menu', new_menu_path %>
+</div>

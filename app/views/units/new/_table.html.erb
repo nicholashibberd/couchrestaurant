@@ -1,0 +1,10 @@
+<%= form_tag create_unit_page_units_path do %>
+	<%= hidden_field_tag "content_type", 'table' %>
+	<div>
+		<%= label_tag :columns %><br />
+		<% 3.times do %>
+		<%= text_field_tag "unit[columns][]" %>
+		<% end %>
+	</div>
+	<%= submit_tag 'Submit' %>
+<% end %>

@@ -13,23 +13,24 @@
 <div>
 	<%= f.label :unit %>
 	<ul id="sortable">
-	<% @page.units.each_with_index do |unit| %>
-				<%= display_unit_with_index(unit) %>
+	<% @page.units.each_with_index do |unit, index| %>
+				<%= display_unit(unit, 'index', index) %>
 	<% end %>
 	</ul>
 </div>
 <div>
 	<%= f.submit 'Save' %>
-	<%#= f.submit 'Add menu' %>
-	<%#= f.submit 'Add textbox' %>
-	<%#= f.submit 'Add heading' %>
-	<%#= f.submit 'Add link' %>	
-	<%#= f.submit 'Add image' %>		
 	<%= link_to 'Add menu', :controller => 'units', :action => 'new', :page_id => request[:id], :content_type => 'menu' %>
 	<%= link_to 'Add textbox', :controller => 'units', :action => 'new', :page_id => request[:id], :content_type => 'textbox' %>
 	<%= link_to 'Add heading', :controller => 'units', :action => 'new', :page_id => request[:id], :content_type => 'heading' %>
 	<%= link_to 'Add link', :controller => 'units', :action => 'new', :page_id => request[:id], :content_type => 'link' %>
 	<%= link_to 'Add image', :controller => 'units', :action => 'new', :page_id => request[:id], :content_type => 'image' %>
+	<%= link_to 'Add table', :controller => 'units', :action => 'new', :page_id => request[:id], :content_type => 'table' %>
+	<%= link_to 'Add map', :controller => 'units', :action => 'new', :page_id => request[:id], :content_type => 'map' %>
+	<%= link_to 'Add review', :controller => 'units', :action => 'new', :page_id => request[:id], :content_type => 'review' %>
+	<%= link_to 'Add contact form', :controller => 'units', :action => 'new', :page_id => request[:id], :content_type => 'contact_form' %>
+	<%= link_to 'Add reservation form', :controller => 'units', :action => 'new', :page_id => request[:id], :content_type => 'reservation_form' %>
+	<%= link_to 'Add download', :controller => 'units', :action => 'new', :page_id => request[:id], :content_type => 'download' %>
 </div>
 <% end %>
 <!--<p> <a href="#image_upload" rel="facebox">Upload images</a> </p>-->

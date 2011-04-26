@@ -2,14 +2,35 @@
 <%= form_for(@menu) do |f| %>
 	<%= f.hidden_field :slug %>
 	<%= f.hidden_field :site %>
+	<%= f.label :name %>
 	<%= f.text_field :name %>
-	<%= f.submit :Submit %>
+	
+	<%= display_price_categories(@menu) do %>  
+		<%= f.label :price_categories %>
+		<% @menu.price_categories.each_with_index do |cat, index| %>
+			<div>
+			<%= text_field_tag "menu[price_categories][]", cat %>
+			<span class="delete_button"><%= submit_tag 'Delete', :name => "delete_price_category[#{index}]" %></span>
+			</div>
+		<% end %>
+		<div>
+		<%= f.label :Add_price_category %><br />
+		<%= text_field_tag "add_price_category" %>
+		<%= f.submit 'Add price category' %>
+		</div>
+	<% end %>
+	
 	<ul id="sortable">
-	<% @menu.menu_sections.each_with_index do |section| %>
-				<%= menu_section(section[0]) %>
-				<%= link_to "Edit", url_for(:controller => 'menu_sections', :action => 'edit', :menu_id => request[:id], :id => section[1]) %>
-				
+	<% @menu.dishes.each_with_index do |dish, index| %>
+		<%= render :partial => "dishes/index", :locals => {:dish => dish, :index => index} %>
 	<% end %>
 	</ul>
+	<%= f.submit :Save %>
 <% end %>
-<%= link_to "New menu section", url_for(:controller => 'menu_sections', :action => 'new', :menu_id => request[:id], :content_type => 'dish') %>
+<%= link_to "New dish", url_for(:controller => 'dishes', :action => 'new', :menu_id => request[:id]) %>
+<script>
+	$(function() {
+		$( "#sortable" ).sortable();
+		$( "#sortable" ).disableSelection();
+	});
+	</script>

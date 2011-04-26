@@ -1,0 +1,16 @@
+<div class="table <%= request[:id] %>_table" id="<%= unit.css_id %>">
+<table>
+	<% unit.columns.each do |column| %>
+		<th><%= column %></th>
+	<% end %>
+	<% unit.rows.each_with_index do |row, index| %>
+		<tr>
+		<% unit.columns.each do |column| %>
+			<td><%= unit.find_entry_by_column(index, column) %></td>
+		<% end %>
+		</tr>
+	<% end %>
+	
+
+</table>
+</div>

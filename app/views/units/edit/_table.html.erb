@@ -1,0 +1,30 @@
+<%= form_tag update_unit_page_unit_path do %>
+		<%= hidden_field_tag "unit[content_type]", unit.content_type %>
+		<%= hidden_field_tag "unit[css_id]", unit.css_id %>			
+	<div>
+		<%= label_tag :columns %><br />
+		<% unit.columns.each_with_index do |column, index| %>
+			<div>
+			<%= text_field_tag "unit[columns][]", unit.columns[index] %>
+			<span class="delete_button"><%= submit_tag 'Delete', :name => "delete_column[#{index}]" %></span>
+			</div>
+		<% end %>
+	</div>
+
+		<% unit.rows.each_with_index do |row, index| %>
+			<div>
+			<% unit.columns.each do |column| %>
+				<%= label_tag "#{column}" %>
+				<%= text_field_tag "unit[rows][][#{column}]", unit.rows[index][column] %>
+			<% end %>
+			<span class="delete_button"><%= submit_tag 'Delete', :name => "delete_row[#{index}]" %></span>
+			</div>
+		<% end %>
+	<%= submit_tag 'Add row' %>
+	<%= submit_tag 'Submit' %>
+<% end %>
+
+<%= form_tag add_column_page_unit_path do %>
+	<%= text_field_tag "new_column" %>
+	<%= submit_tag "Add column" %>
+<% end %>

@@ -18,16 +18,26 @@ class NavItem < Hash
     !self.children.empty?
   end
   
-  def show_children(current_page)
-    current_page == self.slug && self.has_children? || self.children_list.include?(current_page)
+  def main_nav_item?
+    self.casted_by.class == NavItem
+  end
+  
+  def show_children(path)
+    path.gsub!("/pages/", "")
+    path == self.slug && self.has_children? || self.children_list.include?(path)
   end
   
   def children_list
     self.children.map(&:slug)
   end
   
-  def selected?(current_page)
-    current_page == self.slug ? 'selected' : nil
+  def selected?(path)
+    path.gsub!("/pages/", "")
+    if main_nav_item?
+      path == self.slug ? 'child_selected' : nil      
+    else
+      path == self.slug || self.children_list.include?(path) ? 'selected' : nil
+    end
   end
       
 end

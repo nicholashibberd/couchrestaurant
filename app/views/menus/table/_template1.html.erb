@@ -1,0 +1,21 @@
+<div class="menu">
+	<h2 class="menu_name">
+		<%= menu.name %>
+	</h2>
+	<table>
+		<tr>
+			<th></th>
+			<% menu.price_categories.each do |cat| %>
+				<th class="table_price_category"><%= cat %></th>
+			<% end %>
+		</tr>
+		<% menu.dishes.each do |dish| %>
+		<tr>
+			<td class="table_dish_name"><%= dish.name %></td>
+			<% menu.price_categories.each do |cat| %>
+				<td class="table_dish_price"><%= dish.find_price_by_price_category(cat) %></td>
+			<% end %>
+		</tr>
+		<% end %>
+	</table>
+</div>

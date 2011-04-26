@@ -1,0 +1,16 @@
+<div>
+  <% form_tag '/downloads', :id => 'download_form', :multipart => true do %>
+		<%= hidden_field_tag 'slug', params[:page_id] %>
+		<%= hidden_field_tag 'site', @site.theme %>
+    <div>
+		<%= file_field_tag 'attachment' %>
+		</div>
+    <div>
+		<%= label_tag :link_text %>
+		<%= text_field_tag 'link_text' %>
+		</div>
+		<div>
+    <%= submit_tag 'Upload' %>
+		</div>
+  <% end %>
+</div>

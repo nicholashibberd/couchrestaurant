@@ -1,0 +1,9 @@
+<%= form_tag update_unit_page_unit_path do %>
+		<%= hidden_field_tag "unit[content_type]", unit.content_type %>
+		<%= hidden_field_tag "unit[css_id]", unit.css_id %>
+		<div>
+			<%= label_tag :form_type %><br />
+			<%= text_field_tag "unit[form_type]", unit.form_type %>
+		</div>
+	<%= submit_tag 'Submit' %>
+<% end %>

@@ -1,0 +1,7 @@
+<%= form_tag update_unit_page_unit_path do %>
+		<%= hidden_field_tag "unit[content_type]", unit.content_type %>
+		<%= hidden_field_tag "unit[css_id]", unit.css_id %>
+		<%= label_tag 'Menu' %>
+		<%= select_tag 'unit[menu_slug]', options_from_collection_for_select(@site.menus, 'slug', 'name', unit.menu_slug) %>
+	<%= submit_tag 'Submit' %>
+<% end %>

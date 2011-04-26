@@ -1,0 +1,25 @@
+<div class="reservation_form <%= request[:id] %>_reservation_form" id="<%= unit.css_id %>">
+	<%= form_for @message do |f| %>
+	<%= hidden_field_tag :page_id, request[:id] %>
+	<%= hidden_field_tag :site, @site.domain %>
+		<div>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+		</div>
+		<div>
+		<%= f.label :phone %>
+		<%= f.text_field :phone %>
+		</div>
+		<div>
+		<%= f.label :email %>
+		<%= f.text_field :email %>
+		</div>
+		<div>
+		<%= f.label :message %>
+		<%= f.text_area :details %>
+		</div>
+		<div>
+		<%= f.submit 'Submit' %>
+		</div>
+	<% end %>
+</div>

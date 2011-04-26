@@ -1,0 +1,18 @@
+<h1>Please select your time</h1>
+<div id="reservation_form">
+	<%= form_tag details_reservations_path do |f| %>
+	<%= hidden_field_tag :page_id, params[:page_id] %>
+	<%= hidden_field_tag :site, :value => @site.domain %>
+	<%= hidden_field_tag :date, :value => @date %>
+	
+	
+	<% Site::OPENING_TIMES.each do |timeslot| %>
+	<div>
+		<%= new_datetime(@date, timeslot) %> - <%= number_of_bookings(@date, timeslot) %>
+	</div>
+	<% end %>
+	<div>
+		<%= submit_tag "Leave details" %>
+	</div>
+	<% end %>
+</div>

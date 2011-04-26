@@ -25,8 +25,16 @@ class PagesController < ApplicationController
         @page.add_element('link', nil)
       elsif params[:commit] == 'Add heading'
         @page.add_element('heading', nil)
+      elsif params[:commit] == 'Add table'
+        @page.add_element('table', nil)  
+      elsif params[:commit] == 'Add map'
+        @page.add_element('map', nil)  
+      elsif params[:commit] == 'Add reservation form'
+        @page.add_element('reservation_form', nil)  
       elsif params[:commit] == 'Add image'
         @page.add_element('image', {:site => 'theivy', :slug => 'home', :filename => 'test'})
+      elsif params[:commit] == 'Add download'
+        @page.add_element('download', nil)  
       elsif params[:commit] == 'Save'
         #raise params[:page][:units].inspect
         @page.save
@@ -41,13 +49,20 @@ class PagesController < ApplicationController
   end
   
   def show
-    @page = @site.find_page(params[:id])
+    if params[:sub_id]
+      slug = "#{params[:id]}/#{params[:sub_id]}"
+    else
+      slug = params[:id]
+    end
+    @page = @site.find_page(slug)
+    @reservation = Reservation.new
+    @message = Message.new
   end
   
   def create
     @page = Page.new(params[:page])
       if @page.save
-        redirect_to :controller => 'pages', :action => 'show', :id => 'home'
+        redirect_to edit_page_path(@page)
       else
         render 'pages/new'
       end
@@ -73,6 +88,6 @@ class PagesController < ApplicationController
   def update_unit
     @page = @site.find_page(params[:id])
     raise params.inspect
-  end
+  end  
   
 end

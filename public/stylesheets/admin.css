@@ -61,3 +61,32 @@ li.sortable_item {
 	margin-bottom: 10px;
 	background-color: #eee;
 }
+
+/*
+**************************************
+Menu sections
+**************************************
+*/
+
+
+.field {
+	margin-bottom: 5px;
+}
+
+.price_point {
+	background: #eee;
+	padding: 10px;
+	margin-bottom: 10px;
+	width: 500px;
+}
+
+/*
+**************************************
+Menu sections
+**************************************
+*/
+
+#map_canvas {
+	height: 250px;
+}
+
