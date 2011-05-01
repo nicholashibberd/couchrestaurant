@@ -1,18 +1,16 @@
-<h1>Please select your time</h1>
+<h1>Please select your time for <%= @sitting.name %> for <%= params[:group_size] %> on <%= @date %></h1>
 <div id="reservation_form">
-	<%= form_tag details_reservations_path do |f| %>
-	<%= hidden_field_tag :page_id, params[:page_id] %>
-	<%= hidden_field_tag :site, :value => @site.domain %>
-	<%= hidden_field_tag :date, :value => @date %>
-	
-	
-	<% Site::OPENING_TIMES.each do |timeslot| %>
-	<div>
-		<%= new_datetime(@date, timeslot) %> - <%= number_of_bookings(@date, timeslot) %>
+	<%= form_tag details_reservations_path, :remote => true do |f| %>
+	<%= hidden_field_tag :date, @date %>
+	<%= hidden_field_tag :group_size, params[:group_size] %>
+	<% @sitting.timeslots.each do |timeslot| %>
+	<div class="availability_timeslot available_<%= @site.timeslot_available?(@date, timeslot) %>">
+		<%= radio_button_tag 'time', timeslot, false, :disabled => !@site.timeslot_available?(@date, timeslot) %>
+		<%= label_tag timeslot %>		
 	</div>
 	<% end %>
-	<div>
-		<%= submit_tag "Leave details" %>
+	<div id="availability_submit">
+		<%= submit_tag "Confirm" %>
 	</div>
 	<% end %>
 </div>

@@ -8,11 +8,25 @@
     geocoder = new google.maps.Geocoder();
     var latlng = new google.maps.LatLng<%= unit.latlong %>;
     var myOptions = {
-      zoom: 8,
+      zoom: 14,
       center: latlng,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
     map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+		var marker = new google.maps.Marker({  
+		  position: new google.maps.LatLng<%= unit.latlong %>,  
+		  map: map  
+		});
+		
+		var contentString = '<div id="map_info_window">' + String('<%= unit.info_window.html_safe %>') + '</div>';
+
+		var infowindow = new google.maps.InfoWindow({
+		    content: contentString
+		});
+		
+		infowindow.open(map, marker);
+		
   }
 </script> 
 <% end %>

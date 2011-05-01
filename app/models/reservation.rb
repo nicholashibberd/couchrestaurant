@@ -4,7 +4,7 @@ class Reservation < CouchRest::Model::Base
   property :email, String
   property :phone, String
   property :date, :cast_as => Date
-  property :time, :cast_as => Time
+  property :time, :cast_as => DateTime
   property :date_of_booking, :cast_as => Date
   property :group_size, Integer
   property :site
@@ -12,6 +12,7 @@ class Reservation < CouchRest::Model::Base
   view_by :site
   view_by :time
   view_by :group_size
+  view_by :name
   view_by :site_and_time,  
     :map => 
       "function(doc) {

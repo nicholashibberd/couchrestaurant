@@ -10,6 +10,10 @@
 			<%= unit.latlong %>
 		</div>
 		<div>
+			<%= hidden_field_tag "page[units][][info_window]", unit.info_window %>
+			<%= unit.info_window %>
+		</div>
+		<div>
 			<%= link_to 'Edit', :controller => 'units', :action => 'edit', :page_id => request[:id], :id => index %>
 		</div>
 		<div>

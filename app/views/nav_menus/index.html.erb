@@ -1,0 +1,7 @@
+<h1>Navigation Menus</h1>
+<% @site.nav_menus.each do |nav_menu| %>
+	<div>
+		<%= link_to nav_menu.name, :action => 'edit', :id => nav_menu.slug %>
+	</div>
+<% end %>
+<%= link_to 'Add new navigation menu', new_nav_menu_path %>

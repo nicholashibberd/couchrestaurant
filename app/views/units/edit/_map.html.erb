@@ -1,6 +1,18 @@
 <%= content_for :head do %>
+<%= javascript_include_tag 'yahoo_yui/yahoo_dom_event', 'yahoo_yui/element_min', 'yahoo_yui/container_core', 'yahoo_yui/simple_editor' %>
 <link href="http://code.google.com/apis/maps/documentation/javascript/examples/standard.css" rel="stylesheet" type="text/css" /> 
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> 
+<script>
+var myEditor = new YAHOO.widget.SimpleEditor('msgpost', {
+    height: '300px',
+    width: '522px',
+    dompath: true, //Turns on the bar at the bottom
+		handleSubmit: true
+});
+myEditor.render();
+</script>
+
+
 <script type="text/javascript"> 
   var geocoder;
   var map;
@@ -36,17 +48,25 @@
 
 <% end %>
 
+<div class="yui-skin-sam">
 <%= form_tag update_unit_page_unit_path do %>
 	<%= hidden_field_tag "unit[content_type]", unit.content_type %>
 	<%= hidden_field_tag "unit[css_id]", unit.css_id %>			
-	<div>
+		<div>
 		<%= label_tag :address %><br />
 		<%= hidden_field_tag "unit[latlong]", unit.latlong, :id => 'map_latlong' %>
 		<%= text_field_tag "unit[address]", unit.address, :id => 'geocode_address' %>
+		</div>
+		<div>
 		<input id="geocode_button" type="button" value="Find address" onclick="codeAddress()">
-	</div>
+		</div>
+		<div>
+		<%= label_tag :info_window %><br />	
+		<%= text_area_tag "unit[info_window]", unit.info_window, :id => 'msgpost' %>
+		</div>
 	<div id="map_canvas">
 	</div>
-	<%= submit_tag 'Submit' %>
-	
+	<%= submit_tag 'Submit' %>	
 <% end %>
+
+</div>

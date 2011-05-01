@@ -1,10 +1,14 @@
-jQuery.ajaxSetup({  
-    'beforeSend': function (xhr) {xhr.setRequestHeader("Accept", "text/javascript")}  
+$(function() {
+  $('select#sitting').change(function(){
+		$('.booking_reservation_form').addClass('js_form_initiated');
+	  $(this).closest("form").submit();
+  });
 });
 
-$(document).ready(function (){  
-  $('#image_upload_form').submit(function (){  
-    $.post($(this).attr('action'), $(this).serialize(), null, "script");  
-    return false;  
-  });  
+$(function(){
+	$('.availability_timeslot').live('click', function() {
+		$('.availability_timeslot.selected').removeClass('selected');
+		$(this).addClass('selected')
+		$(this).children("input[type=radio]").attr('checked', 'checked');
+	});
 });

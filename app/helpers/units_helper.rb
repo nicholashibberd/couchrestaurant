@@ -9,4 +9,8 @@ module UnitsHelper
     render :partial => "units/new/#{content_type}"
   end
   
+  def info_window_string(content)
+    content_tag(:div, content)
+  end
+  
 end

@@ -40,7 +40,8 @@ img {
 	padding: 10px;
 	border: 1px solid #908F8F;
 	color: #FFF;
-	font-size: 13px
+	font-size: 13px;
+	text-transform: uppercase;	
 }
 
 #left_nav {
@@ -117,16 +118,19 @@ Sitenav
 	margin: 2px 0 12px 0;
 }
 
-
 .pages_content {
-	height: 600px;
 	margin-left: 250px;
+	position: relative;
+}
+
+.content_wrapper {
+	width: 320px;	
+	height: 547px;
 	padding: 40px 30px 30px 30px;
-	width: 320px;
 	color: #fff;
 	font-size: 13px;
-	position: relative;
-	font-family: arial;
+	font-family: arial;	
+	overflow-y: auto;
 }
 
 #pages_show_content a, #pages_show_content a:visited {
@@ -245,6 +249,15 @@ Map
 	height: 250px;	
 }
 
+#map_info_window {
+	color: #000;
+}
+
+#map_info_window a, #map_info_window a:visited {
+	color: #000;
+	text-decoration: underline;
+}
+
 /*
 ***************************************
 Reviews
@@ -260,4 +273,67 @@ Reviews
 	margin-top: 10px;
 	font-weight: bold;
 	text-align: right;
+}
+
+/*
+***************************************
+Booking form
+***************************************
+*/
+
+.reservation_form {
+	margin-top: 20px;
+	background-color: #FFF;
+	border: 1px solid #333;
+	padding: 20px 10px;
+	color: #000;
+}
+
+#booking_reservation_form_1 {
+	height: 300px;
+}
+
+#select_your_sitting {
+	margin-top: 80px;
+}
+
+select#sitting {
+	width: 200px;
+}
+
+.reservation_form .availability_timeslot {
+	padding: 5px;
+	float: left;
+	margin: 2px 5px 5px 2px;
+	border: 1px solid #000;
+	cursor: pointer;
+}
+
+.availability_timeslot label {
+	cursor: pointer;
+}
+
+.reservation_form .availability_timeslot.selected {
+	border: 3px solid red;
+	margin: 0 3px 3px 0;
+}
+
+.reservation_form .available_true {
+	background-color: green;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#249124));
+	background: -moz-linear-gradient(top,  #FFF,  #249124);	
+}
+
+.reservation_form .available_false {
+	background-color: blue;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#1BA3D1));
+	background: -moz-linear-gradient(top,  #FFF,  #1BA3D1);	
+}
+
+.reservation_form #availability_submit {
+	clear: left;
+}
+
+.js_form_initiated input[type=radio] {
+	display: none;
 }

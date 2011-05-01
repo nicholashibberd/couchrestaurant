@@ -1,6 +1,9 @@
 <%= include_yui_editor_if_used.html_safe %>
 <h1>Edit Page</h1>
-<%= link_to @page.name, @page %>
+<%= display_new_page_link(@page) do %>  
+	<%= link_to 'Add sub page', :action => 'new', :parent_id => @page.slug %>
+<% end %>
+
 <%= form_for edit_page_path(@page), :multipart => true do |f| %>
 <div>
 <%= f.label :name %>

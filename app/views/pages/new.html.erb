@@ -1,10 +1,14 @@
 <h1>New Page</h1>
 <%= form_for @page do |f| %>
-<%= f.hidden_field :site, :value => @site.domain %>
+<%= f.hidden_field :site_domain, :value => @site.domain %>
 <%= f.hidden_field :page_type, :value => 'misc' %>
 <div>
 <%= f.label :name %>
 <%= f.text_field :name %>
+</div>
+<div>
+<%= f.label :parent_page %>
+<%= f.select :parent_slug, options_for_select_including_blank(@site.top_level_pages, params[:parent_id], 'None'), {:autocomplete => "off"} %>
 </div>
 <div>
 <%= f.label :slug %>

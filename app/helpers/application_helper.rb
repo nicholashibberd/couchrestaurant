@@ -27,5 +27,11 @@ module ApplicationHelper
       Integer(@site.by_time(datetime)["rows"].first["value"])
     end
   end
-    
+  
+  def options_for_select_including_blank(collection, selected, blank)
+    array = [[blank, nil]]
+    collection.each {|item| array << [item.name, item.slug]}
+    options_for_select(array, selected)
+  end
+      
 end

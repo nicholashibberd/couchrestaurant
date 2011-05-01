@@ -1,10 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE HTML>
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title><%= @site.name %></title>
 	<%= stylesheet_link_tag 'theivy', 'cupertino/jquery-ui.css' %>
-	<%= javascript_include_tag 'jquery', 'jquery-ui' %>
+	<%= javascript_include_tag 'jquery', 'jquery-ui', 'rails', 'application' %>
+	<%= csrf_meta_tag %>
 	<%= yield :head %>
 </head>
 <body onload="initialize()">
@@ -15,11 +15,11 @@
 		<div id="left_nav">
 			<div id="header">
 				<div id="logo">
-				<%= logo %>
+				<%#= logo %>
 				</div>
 				<div id="header_address">
-				<%= @site.address.to_s %><br />
-				<%= @site.phone %>
+				<%#= @site.address.to_s %><br />
+				<%#= @site.phone %>
 				</div>
 			</div>
 			<div id="site_nav">
@@ -27,13 +27,17 @@
 			</div>
 		</div>
 		<div id="<%= params[:controller] %>_<%= params[:action] %>_content" class="<%= params[:controller] %>_content content">
-			<% flash.each do |key, value| %> 
-			<div class="flash <%= key %>"><%= value %></div>
-			<% end %>
-			<%= yield %>
+			<div id="background_image">
+				<%= image_tag(@page.background_image) %>
+			</div>
+			<div class="content_wrapper">
+				<% flash.each do |key, value| %> 
+				<div class="flash <%= key %>"><%= value %></div>
+				<% end %>
+				<%= yield %>
+			</div>
 		</div>
 	</div>
 	<%#= render 'layouts/footer' %>
 </body>
 </html>
-

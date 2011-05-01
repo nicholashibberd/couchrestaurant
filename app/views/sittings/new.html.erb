@@ -1,0 +1,25 @@
+<%= form_tag create_sitting_path do %>
+	<div>
+		<%= label_tag :name %>
+		<%= text_field_tag 'sitting[name]' %>
+	</div>
+	<div>
+		<%= label_tag :from %>
+		<%= select_tag 'sitting[from]', options_for_select(Site::TIMESLOTS) %>
+	</div>
+	<div>
+		<%= label_tag :to %>
+		<%= select_tag 'sitting[to]', options_for_select(Site::TIMESLOTS) %>
+	</div>
+	<div>
+		<%= label_tag :increment %>
+		<%= select_tag 'sitting[increment]', options_for_select(Site::INCREMENTS) %>
+	</div>
+	<div>
+		<%= label_tag :capacity %>
+		<%= text_field_tag 'sitting[capacity]' %>
+	</div>
+	<div>
+		<%= submit_tag 'Submit' %>
+	</div>
+<% end %>

@@ -1,4 +1,8 @@
 Couchrestaurant::Application.routes.draw do
+  
+  #map.task_archive 'pages/:year/:month', :controller => 'pages', :action => 'show'
+  
+  resources :nav_menus
   resources :menus do
     resources :dishes do
       member do 
@@ -13,8 +17,12 @@ Couchrestaurant::Application.routes.draw do
   end 
   match "update_dish" => "dishes#update_dish"
   match "create_dish" => "dishes#create_dish"
+  match "update_sitting" => "sittings#update_sitting"
+  match "create_sitting" => "sittings#create_sitting"
+  match "update_nav_menu" => "nav_menus#update_nav_menu"
 
   resources :sites
+  resources :sittings
   resources :pages do 
     collection do
       post 'new_page'
@@ -46,8 +54,8 @@ Couchrestaurant::Application.routes.draw do
   end
   resources :reservations do
     collection do
-      get 'availability'
-      post 'availability', 'details'
+      get 'availability', 'details', 'choose_dates','thankyou', 'calendar'
+      post 'availability', 'details', 'choose_dates', 'calendar'
     end
   end
   resources :messages  
@@ -57,7 +65,8 @@ Couchrestaurant::Application.routes.draw do
   #root :to => 'pages/show/home'
   match '/pages/:id/edit' => 'pages#edit'
   match '/menus/:id/edit' => 'menus#edit'
-  match '/pages/:id/:sub_id' => 'pages#show'
+  match '/pages/:id/:sub_id' => 'pages#show', :as => :child_page
+  match '/pages/:id/:sub_id/edit' => 'pages#edit', :as => :edit_child_page
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

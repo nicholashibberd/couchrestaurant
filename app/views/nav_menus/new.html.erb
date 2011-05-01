@@ -1,0 +1,10 @@
+<h1>New Navigation Menu</h1>
+<%= form_tag nav_menus_path do %>
+	<div>
+	<%= label_tag :name %>	<br />
+	<%= text_field_tag 'nav_menu[name]' %>
+	</div>
+	<div>
+	<%= submit_tag 'Submit' %>
+	</div>
+<% end %>

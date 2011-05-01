@@ -6,14 +6,17 @@
 	});
 </script>
 <% end %>
+<div>
+	 Please select your dates for <%= params[:sitting] %> for <%= params[:group_size] %> people
+</div>
 <h1>Reservations</h1>
 <div>
 	Please select your date
 </div>
-<div class="reservation_form <%= request[:id] %>_reservation_form" id="<%= unit.css_id %>">
+<div id="reservation_form">
 	<%= form_tag availability_reservations_path do |f| %>
-	<%= hidden_field_tag :page_id, request[:id] %>
-	<%= hidden_field_tag :site, :value => @site.domain %>
+	<%= hidden_field_tag :sitting, params[:sitting] %>
+	<%= hidden_field_tag :group_size, params[:group_size] %>	
 	<div>
 		<%= text_field_tag :date, nil, :id => 'datepicker' %><br />  
 	</div>

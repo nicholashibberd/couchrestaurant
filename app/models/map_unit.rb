@@ -3,4 +3,6 @@ class MapUnit < Unit
   property :latlong
   property :height
   property :width
+  property :info_window
+  
 end

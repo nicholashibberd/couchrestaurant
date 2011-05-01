@@ -4,24 +4,39 @@ class Page < CouchRest::Model::Base
   property :slug, String
   property :page_type
   property :units, :cast_as => [Unit], :default => [], :init_method => "new_instance"
-  property :site
+  property :site_domain
   property :background_images, :cast_as => [BackgroundImage], :default => []
-  property :parent
-  
+  property :parent_slug
+   
   view_by :slug
   view_by :site_id
-  view_by :site
+  view_by :site_domain
   view_by :name
   
-  view_by :site_and_slug,  :map => 
+  view_by :site_domain_parent_and_slug,  :map => 
   "function(doc) {
     if ((doc['couchrest-type'] == 'Page') && (doc['slug'] != null)) {
-      emit([doc['site'], doc['slug']], null);
+      emit([doc['site_domain'], doc['parent_slug'], doc['slug']], null);
     }
   }"
-  
   def to_param
     slug
+  end
+  
+  def site
+    Site.find_by_domain(site_domain)
+  end
+  
+  def parent
+    site.find_page(nil, parent_slug)
+  end
+  
+  def has_parent?
+    !parent.nil?
+  end
+  
+  def full_slug
+    has_parent? ? "#{parent_slug}/#{slug}" : slug
   end
     
   def menus
@@ -70,6 +85,10 @@ class Page < CouchRest::Model::Base
   
   def existing_units(content_type)
     units.select {|unit| unit.has_value?(content_type) }.size
+  end
+  
+  def background_image
+    "#{background_images.first.site}/#{background_images.first.slug}/backgrounds/#{background_images.first.filename}.jpeg"
   end
     
 end

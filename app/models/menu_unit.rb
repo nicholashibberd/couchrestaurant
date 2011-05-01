@@ -8,7 +8,7 @@ class MenuUnit < Unit
   end
   
   def site
-    self.casted_by.site
+    self.casted_by.site_domain
   end
   
 end

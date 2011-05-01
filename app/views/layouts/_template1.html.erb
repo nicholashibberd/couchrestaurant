@@ -1,8 +1,3 @@
-<% if !@page.background_images.empty? %>
-<div id="background_image">
-<%= image_tag("#{@page.background_images.first.site}/#{@page.background_images.first.slug}/backgrounds/#{@page.background_images.first.filename}.jpeg") %>
-</div>
-<% end %>
 <% @page.units.each do |unit| %>
 	<%= display_unit(unit, 'show', nil) %>
 <% end %>

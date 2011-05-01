@@ -1,0 +1,20 @@
+<div class="reservation_form <%= request[:id] %>_reservation_form" id="<%= unit.css_id %>">
+	<div id="form_wrapper">
+		<%= form_tag calendar_reservations_path, :remote => true do |f| %>
+		<div>
+			<div id="select_your_sitting">
+			Select your preferred session and party size
+			</div>
+			<%= select_tag :sitting, options_for_select_including_blank(@site.sittings, nil, 'Choose Session'), {:autocomplete => "off"} %>
+			<%= select_tag :group_size, options_for_select([2,3,4,5,6]) %>
+		</div>
+		<noscript>
+		<div>
+			<%= submit_tag "Continue" %>
+		</div>
+		</noscript>
+		<% end %>
+		<div id="calendar">
+		</div>
+	</div>
+</div>

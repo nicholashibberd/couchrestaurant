@@ -15,5 +15,5 @@ class SitesController < ApplicationController
     end
     redirect_to sites_path
   end
-  
+    
 end

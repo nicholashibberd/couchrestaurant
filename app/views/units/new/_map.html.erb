@@ -40,10 +40,18 @@
 <%= form_tag create_unit_page_units_path do %>
 	<%= hidden_field_tag "content_type", 'map' %>
 	<div>
+		<div>
 		<%= label_tag :address %><br />
 		<%= hidden_field_tag "unit[latlong]", nil, :id => 'map_latlong' %>
 		<%= text_field_tag "unit[address]", nil, :id => 'geocode_address' %>
+		</div>
+		<div>
 		<input id="geocode_button" type="button" value="Find address" onclick="codeAddress()">
+		</div>
+		<div>
+		<%= label_tag :info_window %><br />	
+		<%= text_field_tag "unit[info_window]" %>
+		</div>
 	</div>
 	<div id="map_canvas">
 	</div>

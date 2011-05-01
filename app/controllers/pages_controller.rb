@@ -12,7 +12,11 @@ class PagesController < ApplicationController
   end
 
   def edit
-    @page = @site.find_page(params[:id])
+    if params[:sub_id]
+      @page = @site.find_page(params[:id], params[:sub_id])
+    else
+      @page = @site.find_page(nil, params[:id])
+    end
     if request.post?
       unless params[:page].nil?
         @page.update_elements(params[:page][:units])
@@ -50,19 +54,21 @@ class PagesController < ApplicationController
   
   def show
     if params[:sub_id]
-      slug = "#{params[:id]}/#{params[:sub_id]}"
+    @page = @site.find_page(params[:id], params[:sub_id])
     else
-      slug = params[:id]
+      @page = @site.find_page(nil, params[:id])
     end
-    @page = @site.find_page(slug)
     @reservation = Reservation.new
     @message = Message.new
+    @header_nav = @site.find_nav_menu('header')
+    @main_nav = @site.find_nav_menu('main_navigation')
   end
   
   def create
+    params[:page][:parent_slug].empty? ? params[:page].delete('parent_slug') : return
     @page = Page.new(params[:page])
       if @page.save
-        redirect_to edit_page_path(@page)
+        redirect_to url_for_page_edit(@page)
       else
         render 'pages/new'
       end

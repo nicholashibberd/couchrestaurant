@@ -1,0 +1,7 @@
+<h1>Sittings</h1>
+<% @site.sittings.each do |sitting| %>
+	<div>
+		<%= link_to sitting.name, :action => 'edit', :id => sitting.slug %>: <%= sitting.from_timeslot %> - <%= sitting.to_timeslot %>
+	</div>
+<% end %>
+<%= link_to 'Add new sitting', new_sitting_path %>

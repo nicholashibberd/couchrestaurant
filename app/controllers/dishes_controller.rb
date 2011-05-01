@@ -39,7 +39,7 @@ class DishesController < ApplicationController
     menu = @site.find_menu(params[:menu_id])
     menu.add_dish(params[:dish])
     if params[:commit] == 'Add price'
-      dish_number = menu.dishes - 1
+      dish_number = menu.dishes - 1 #should this be menu.dishes.size?
       dish = menu.dishes.last
       dish.add_price
       menu.save!
